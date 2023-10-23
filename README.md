@@ -1,2 +1,2 @@
 #
-Log of my daily leetcodes
+Leetcodes
