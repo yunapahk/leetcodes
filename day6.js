@@ -48,13 +48,59 @@
 // 1 <= target.length <= 100
 // 1 <= n <= 100
 // 1 <= target[i] <= n
-// target is strictly increasing.
+// target 
 
-// /**
-//  * @param {number[]} target
-//  * @param {number} n
-//  * @return {string[]}
-//  */
-// var buildArray = function(target, n) {
-    
-// };
+
+// JavaScript
+function buildArray(target, n) {
+    let res = [];
+    let stack = [];
+    let cur = 1;  
+
+    for (let num of target) {
+        while (!stack.length || stack[stack.length - 1] !== num) {
+            res.push("Push");
+            stack.push(cur);
+            if (stack[stack.length - 1] !== num) { 
+                res.push("Pop");
+                stack.pop();
+            }
+            cur++; 
+        }
+
+        stack.pop();
+    }
+
+    return res;
+}
+
+// Test
+let target = [1, 3];
+let n = 3;
+console.log(buildArray(target, n));  // ['Push', 'Push', 'Pop', 'Push']
+
+
+
+// Python
+// def buildArray(target, n):
+//     res = []
+//     stack = []
+//     cur = 1 
+
+//     for num in target:
+//         while not stack or stack[-1] != num:
+//             res.append("Push")
+//             stack.append(cur)
+//             if stack[-1] != num:  
+//                 res.append("Pop")
+//                 stack.pop()
+//             cur += 1 
+
+//         stack.pop()
+
+//     return res
+
+// # Test
+// target = [1,3]
+// n = 3
+// print(buildArray(target, n))  # ['Push', 'Push', 'Pop', 'Push']
